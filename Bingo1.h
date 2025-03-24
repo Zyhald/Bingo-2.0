@@ -12,8 +12,8 @@ using namespace std;
 
 class BingoCard {
 private:
-    vector<vector<int>> card;  // Cartão 5x5 com números únicos
-    vector<vector<bool>> marked;  // Marcações dos números
+    vector<vector<int>> card;  // Cartao 5x5 com numeros unicos
+    vector<vector<bool>> marked;  // Marcacao dos numeros
 public:
     BingoCard(set<int>& availableNumbers);
     void markNumber(int num);
