@@ -9,15 +9,15 @@ BingoCard::BingoCard(set<int>& availableNumbers) : card(5, vector<int>(5)), mark
             int num = col * 15 + i + 1;
             if (availableNumbers.count(num)) columnNumbers.push_back(num);
         }
-        shuffle(columnNumbers.begin(), columnNumbers.end(), default_random_engine(random_device{}()));
+        shuffle(columnNumbers.begin(), columnNumbers.end(), default_random_engine(random_device{}())); // 
 
         for (int row = 0; row < 5; ++row) {
             if (row == 2 && col == 2) {
-                card[row][col] = 0; // Espaço livre
+                card[row][col] = 0; // Espaco livre do centro
                 marked[row][col] = true;
             } else {
                 card[row][col] = columnNumbers[row];
-                availableNumbers.erase(columnNumbers[row]); // Remove para evitar repetição entre cartões
+                availableNumbers.erase(columnNumbers[row]); // Remove o ultimo elemento para evitar repeticao entre cartoes
             }
         }
     }
@@ -54,11 +54,11 @@ void BingoCard::printCard() const {
     for (int i = 0; i < 5; ++i) {
         for (int j = 0; j < 5; ++j) {
             if (card[i][j] == 0) 
-                cout << " *  ";  // Espaço livre no centro
+                cout << " *  ";  // Espaco livre no centro
             else if (marked[i][j]) 
-                cout << "[X] ";  // Número marcado
+                cout << "[X] ";  // Simbolo de marcacao dos numeros
             else 
-                cout << (card[i][j] < 10 ? " " : "") << card[i][j] << "  ";  // Número normal
+                cout << (card[i][j] < 10 ? " " : "") << card[i][j] << "  ";  // Separacao dos numeros por espaco
         }
         cout << endl;
     }
@@ -93,7 +93,7 @@ void BingoGame::drawNumber() {
 
 void BingoGame::playGame() {
     while (!numberPool.empty()) {
-        cout << "Deseja sortear um número? (S/N): ";
+        cout << "Deseja sortear um numero? (S/N): ";
         char escolha;
         cin >> escolha;
 
@@ -101,7 +101,7 @@ void BingoGame::playGame() {
             cout << "Jogo encerrado." << endl;
             return;
         } else if (escolha != 'S' && escolha != 's') {
-            cout << "Opção inválida! Digite S para continuar ou N para sair." << endl;
+            cout << "Opção invalida! Digite S para continuar ou N para sair." << endl;
             continue;
         }
 
@@ -111,3 +111,4 @@ void BingoGame::playGame() {
     }
 
 }
+
