@@ -2,7 +2,7 @@
 
 BingoCard::BingoCard(set<int>& availableNumbers) : card(5, vector<int>(5)), marked(5, vector<bool>(5, false)) {
     vector<int> columnNumbers;
-    
+
     for (int col = 0; col < 5; ++col) {
         columnNumbers.clear();
         for (int i = 0; i < 15; ++i) {
@@ -50,7 +50,7 @@ bool BingoCard::checkBingo() const {
 }
 
 void BingoCard::printCard() const {
-    cout << "B  I  N  G  O\n";
+    cout << "B   I   N   G   O\n";
     for (int i = 0; i < 5; ++i) {
         for (int j = 0; j < 5; ++j) {
             if (card[i][j] == 0) 
@@ -75,10 +75,6 @@ BingoGame::BingoGame() {
 }
 
 void BingoGame::drawNumber() {
-    if (numberPool.empty()) {
-        cout << "Todos os números já foram sorteados!" << endl;
-        return;
-    }
 
     int num = numberPool.back();
     numberPool.pop_back();
@@ -109,8 +105,9 @@ void BingoGame::playGame() {
             continue;
         }
 
+        system("clear");
+
         drawNumber();
     }
 
-    cout << "Fim do jogo! Todos os números foram sorteados." << endl;
 }
